@@ -13,10 +13,11 @@ def main():
     coordinator = next(zone for zone in soco.discover() if zone.is_coordinator)
 
     for i in range(0, 7):
-        btn = tk.Button(root, text=f'{10*i}', command=lambda i=i: (
-            setattr(coordinator.group, "volume", i*10)
-        ))
-        btn.grid(column=0, row=i)
+        btn = tk.Button(root,
+        text=f'{10*i}', 
+        width=4,
+        command=lambda i=i: setattr(coordinator.group, "volume", i*10))
+        btn.grid(column=0, row=i, padx=5)
 
     print("zones:")
 
@@ -41,12 +42,15 @@ def main():
 
         uri = station.resources[0].uri
         metadata = station.resource_meta_data
-        btn = tk.Button(root, text=station.title, command=lambda uri=uri,metadata=metadata: play_station(coordinator, uri, metadata))
+        btn = tk.Button(root, 
+            text=station.title, 
+            width=30,
+            command=lambda uri=uri,metadata=metadata: play_station(coordinator, uri, metadata))
         
         divider = 3
         col = (i % divider) + 1
         row = int(i/divider)
-        btn.grid(row=row, column=col)
+        btn.grid(row=row, column=col, padx=5, pady=2)
 
         i = i + 1
 
