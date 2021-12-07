@@ -34,7 +34,7 @@ def main():
 
         uri = station.resources[0].uri
         metadata = station.resource_meta_data
-        btn = tk.Button(root, text=station.title + "\r\n" + uri, command=lambda uri=uri,metadata=metadata: play_station(coordinator, uri, metadata))
+        btn = tk.Button(root, text=station.title, command=lambda uri=uri,metadata=metadata: play_station(coordinator, uri, metadata))
         
         divider = 3
         col = i % divider
