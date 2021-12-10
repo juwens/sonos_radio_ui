@@ -19,6 +19,21 @@ def main():
         command=lambda i=i: setattr(coordinator.group, "volume", i*10))
         btn.grid(column=0, row=i, padx=5)
 
+
+    def partyMode():
+        activeSpeaker =soco.discovery.by_name("Wohnzimmer") 
+        activeSpeaker.partymode()
+        # for speaker in soco.discover():
+        #     if not (speaker in activeSpeaker.group.members):
+        #         activeSpeaker.group.members.add(speaker)
+
+    btnPartyMode = tk.Button(root, 
+        text="party mode",
+        command=partyMode
+    )
+    btnPartyMode.grid(column=0, row=7)
+        
+
     print("zones:")
 
     for zone in soco.discover():
