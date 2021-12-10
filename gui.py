@@ -12,11 +12,15 @@ def main():
 
     coordinator = next(zone for zone in soco.discover() if zone.is_coordinator)
 
+    def setVolume(volume):
+        for speaker in soco.discover():
+            speaker.volume = volume
+
     for i in range(0, 7):
         btn = tk.Button(root,
         text=f'{10*i}', 
         width=4,
-        command=lambda i=i: setattr(coordinator.group, "volume", i*10))
+        command=lambda i=i: setVolume(i*10))
         btn.grid(column=0, row=i, padx=5)
 
 
