@@ -4,9 +4,10 @@
 
 VOID startup(LPCTSTR lpApplicationName, LPSTR lpCommandLine);
 
+#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 int main(void)
 {
-    startup(NULL, "python gui.py");
+    startup(NULL, "pythonw gui.py");
     return 1;
 }
 
@@ -15,7 +16,7 @@ VOID startup(LPCTSTR lpApplicationName, LPSTR lpCommandLine)
    // additional information
    STARTUPINFO si;     
    PROCESS_INFORMATION pi;
-
+   
    // set the size of the structures
    ZeroMemory( &si, sizeof(si) );
    si.cb = sizeof(si);
